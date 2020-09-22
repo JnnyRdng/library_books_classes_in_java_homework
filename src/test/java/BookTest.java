@@ -9,12 +9,22 @@ public class BookTest {
 
     @Before
     public void before() {
-        book = new Book("The Book Thief", "Markus Zusack", "Novel");
+        book = new Book("The Book Thief", "Markus Zusak", "Novel");
     }
 
     @Test
     public void bookHasATitle() {
         assertEquals("The Book Thief", book.getTitle());
+    }
+
+    @Test
+    public void bookHasAnAuthor() {
+        assertEquals("Markus Zusak", book.getAuthor());
+    }
+
+    @Test
+    public void bookHasAGenre() {
+        assertEquals("Novel", book.getGenre());
     }
 
 }
