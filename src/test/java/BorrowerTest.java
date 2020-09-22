@@ -12,12 +12,23 @@ public class BorrowerTest {
     @Before
     public void before() {
         book = new Book("The Book Thief", "Markus Zusak", "Novel");
-        library = new Library(5);
         borrower = new Borrower();
     }
 
     @Test
     public void borrowerHasEmptyBooksList() {
+        assertEquals(0, borrower.numOfBooks());
+    }
+
+    @Test
+    public void borrowerCanAddBookToList() {
+        borrower.add(book);
+        assertEquals(1, borrower.numOfBooks());
+    }
+
+    @Test
+    public void borrowerCanRemoveBookFromList() {
+        borrower.remove(book);
         assertEquals(0, borrower.numOfBooks());
     }
 

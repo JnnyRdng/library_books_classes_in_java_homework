@@ -11,4 +11,12 @@ public class Borrower {
     public int numOfBooks() {
         return this.books.size();
     }
+
+    public void add(Book book) {
+        this.books.add(book);
+    }
+
+    public void remove(Book book) {
+        this.books.remove(book);
+    }
 }
