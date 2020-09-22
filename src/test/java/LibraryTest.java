@@ -77,7 +77,17 @@ public class LibraryTest {
         library.lend(borrower);
         assertEquals(0, library.numberOfBooks());
         assertEquals(1, borrower.numOfBooks());
-
     }
+
+    @Test
+    public void libraryCanRetrieveBooksFromBorrower() {
+        library.add(book);
+        library.lend(borrower);
+        library.retrieveBooks(borrower);
+        assertEquals(1, library.numberOfBooks());
+        assertEquals(0, borrower.numOfBooks());
+    }
+
+
 
 }

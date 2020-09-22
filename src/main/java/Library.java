@@ -43,4 +43,11 @@ public class Library {
             remove(book);
         }
     }
+
+    public void retrieveBooks(Borrower borrower) {
+        while (borrower.hasBooks()) {
+            Book returnedBook = borrower.remove();
+            this.add(returnedBook);
+        }
+    }
 }

@@ -28,8 +28,27 @@ public class BorrowerTest {
 
     @Test
     public void borrowerCanRemoveBookFromList() {
-        borrower.remove(book);
+        borrower.add(book);
+        borrower.remove();
         assertEquals(0, borrower.numOfBooks());
+    }
+
+    @Test
+    public void bookIsReturnedWhenRemoved() {
+        borrower.add(book);
+        Book returnedBook = borrower.remove();
+        assertEquals(book, returnedBook);
+    }
+
+    @Test
+    public void borrowerHasBooks() {
+        borrower.add(book);
+        assertTrue(borrower.hasBooks());
+    }
+
+    @Test
+    public void borrowerDoesntHaveBooks() {
+        assertFalse(borrower.hasBooks());
     }
 
 }

@@ -16,7 +16,11 @@ public class Borrower {
         this.books.add(book);
     }
 
-    public void remove(Book book) {
-        this.books.remove(book);
+    public Book remove() {
+        return this.books.remove(0);
+    }
+
+    public boolean hasBooks() {
+        return this.numOfBooks() > 0;
     }
 }
