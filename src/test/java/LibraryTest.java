@@ -19,4 +19,17 @@ public class LibraryTest {
         assertEquals(0, library.numberOfBooks());
     }
 
+    @Test
+    public void canAddABookToTheLibrary() {
+        library.add(book);
+        assertEquals(1, library.numberOfBooks());
+    }
+
+    @Test
+    public void canRemoveABookFromTheLibrary() {
+        library.add(book);
+        library.remove(book);
+        assertEquals(0, library.numberOfBooks());
+    }
+
 }
