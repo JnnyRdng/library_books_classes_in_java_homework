@@ -7,11 +7,13 @@ public class LibraryTest {
 
     private Library library;
     private Book book;
+    private Borrower borrower;
 
     @Before
     public void before() {
         library = new Library(15);
         book = new Book("The Book Thief", "Markus Zusak", "Novel");
+        borrower = new Borrower();
     }
 
     @Test
@@ -56,6 +58,26 @@ public class LibraryTest {
             library.add(book);
         }
         assertEquals(15, library.numberOfBooks());
+    }
+
+    @Test
+    public void libraryHasBooksToLend() {
+        library.add(book);
+        assertTrue(library.hasBooks());
+    }
+
+    @Test
+    public void libraryDoesntHaveBooksToLend() {
+        assertFalse(library.hasBooks());
+    }
+
+    @Test
+    public void libraryCanLendBookToBorrower() {
+        library.add(book);
+        library.lend(borrower);
+        assertEquals(0, library.numberOfBooks());
+        assertEquals(1, borrower.numOfBooks());
+
     }
 
 }

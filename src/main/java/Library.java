@@ -31,4 +31,16 @@ public class Library {
     public boolean shelfSpace() {
         return getCapacity() > numberOfBooks();
     }
+
+    public boolean hasBooks() {
+        return numberOfBooks() > 0;
+    }
+
+    public void lend(Borrower borrower) {
+        if (hasBooks()) {
+            Book book = this.booksList.get(0);
+            borrower.add(book);
+            remove(book);
+        }
+    }
 }
