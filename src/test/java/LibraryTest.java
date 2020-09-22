@@ -50,4 +50,12 @@ public class LibraryTest {
         assertFalse(library.shelfSpace());
     }
 
+    @Test
+    public void libraryCantAddMoreBooksThanThereIsCapacity() {
+        for (int i = 0; i < 20; i++) {
+            library.add(book);
+        }
+        assertEquals(15, library.numberOfBooks());
+    }
+
 }

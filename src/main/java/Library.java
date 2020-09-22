@@ -15,7 +15,9 @@ public class Library {
     }
 
     public void add(Book book) {
-        this.booksList.add(book);
+        if (shelfSpace()) {
+            this.booksList.add(book);
+        }
     }
 
     public void remove(Book book) {
