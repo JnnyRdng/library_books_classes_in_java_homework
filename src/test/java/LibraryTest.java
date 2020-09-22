@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -88,6 +90,47 @@ public class LibraryTest {
         assertEquals(0, borrower.numOfBooks());
     }
 
+    @Test
+    public void libraryHasAnEmptyGenreHashMap() {
+        HashMap<String, Integer> test = new HashMap<>();
+        assertEquals(0, library.getGenres().size());
+        assertEquals(test, library.getGenres());
+    }
+
+    @Test
+    public void libraryKnowsHowManyBooksOfEachGenreItHasMultipleGenres() {
+        library.add(book);
+        HashMap<String, Integer> genres = new HashMap<>();
+        genres.put("Novel", 1);
+        assertEquals(genres, library.getGenres());
+        assertEquals(1, library.getGenres().size());
+    }
+
+    @Test
+    public void libraryKnowsHowManyBooksOfEachGenreItHas() {
+        library.add(book);
+        library.add(book);
+        library.add( new Book("The Very Hungry Caterpillar", "Eric Carle", "Children's Literature"));
+        HashMap<String, Integer> genres = new HashMap<>();
+        genres.put("Novel", 2);
+        genres.put("Children's Literature", 1);
+        assertEquals(genres, library.getGenres());
+        assertEquals(2, library.getGenres().size());
+    }
+
+    @Test
+    public void genreHashMapDecrementsWhenABookIsRemoved() {
+        library.add(book);
+        library.add(book);
+        Book newBook = new Book("The Very Hungry Caterpillar", "Eric Carle", "Children's Literature");
+        library.add(newBook);
+        library.remove(book);
+        library.remove(newBook);
+        HashMap<String, Integer> genres = new HashMap<>();
+        genres.put("Novel", 1);
+        assertEquals(genres, library.getGenres());
+        assertEquals(1, library.getGenres().size());
+    }
 
 
 }

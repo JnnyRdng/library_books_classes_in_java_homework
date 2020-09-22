@@ -1,13 +1,16 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
     private ArrayList<Book> booksList;
     private int capacity;
+    private HashMap<String, Integer> genres;
 
     public Library(int capacity) {
         this.booksList = new ArrayList<>();
         this.capacity = capacity;
+        this.genres = new HashMap<>();
     }
 
     public int numberOfBooks() {
@@ -17,11 +20,39 @@ public class Library {
     public void add(Book book) {
         if (shelfSpace()) {
             this.booksList.add(book);
+            this.addGenre(book);
         }
+    }
+
+    public void addGenre(Book book) {
+        String genre = book.getGenre();
+        Integer currentValue = this.genres.get(genre);
+        if (currentValue == null) {
+            this.genres.put(genre, 1);
+        } else {
+            Integer newValue = currentValue + 1;
+            this.genres.replace(genre, newValue);
+        }
+    }
+
+    public void removeGenre(Book book) {
+        String genre = book.getGenre();
+        Integer currentValue = this.genres.get(genre);
+        Integer newValue = currentValue - 1;
+        if (newValue == 0) {
+            this.genres.remove(genre);
+        } else {
+            this.genres.replace(genre, newValue);
+        }
+    }
+
+    public HashMap<String, Integer> getGenres() {
+        return this.genres;
     }
 
     public void remove(Book book) {
         this.booksList.remove(book);
+        this.removeGenre(book);
     }
 
     public int getCapacity() {
